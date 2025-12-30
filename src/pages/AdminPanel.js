@@ -44,8 +44,8 @@ const AdminPanel = () => {
   const fetchStats = async () => {
     try {
       const [galleryRes, winnersRes] = await Promise.all([
-        axios.get('/api/gallery?limit=1'),
-        axios.get('/api/winners')
+        axios.get('https://mpl-server-t9ib.onrender.com/api/gallery?limit=1'),
+        axios.get('https://mpl-server-t9ib.onrender.com/api/winners')
       ]);
 
       setStats({
@@ -61,7 +61,7 @@ const AdminPanel = () => {
 
   const fetchGalleryImages = async () => {
     try {
-      const response = await axios.get('/api/gallery?limit=20');
+      const response = await axios.get('https://mpl-server-t9ib.onrender.com/api/gallery?limit=20');
       if (response.data.success) {
         setGalleryImages(response.data.data);
       }
@@ -147,7 +147,7 @@ const AdminPanel = () => {
       if (uploadResult.success) {
         // Save to MongoDB if it's for gallery
         if (selectedFolder === 'gallery') {
-          const saveResponse = await axios.post('/api/gallery/add', {
+          const saveResponse = await axios.post('https://mpl-server-t9ib.onrender.com/api/gallery/add', {
             title: imageTitle,
             imageUrl: uploadResult.url,
             category: imageCategory,
@@ -186,7 +186,7 @@ const AdminPanel = () => {
     }
 
     try {
-      await axios.delete(`/api/gallery/${imageId}`);
+      await axios.delete(`https://mpl-server-t9ib.onrender.com/api/gallery/${imageId}`);
       setGalleryImages(galleryImages.filter(img => img._id !== imageId));
       toast.success('Image deleted successfully!');
       fetchStats();

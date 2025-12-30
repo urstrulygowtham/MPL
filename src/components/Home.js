@@ -71,7 +71,7 @@ const Home = () => {
   const fetchWinners = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/winners');
+      const response = await axios.get('https://mpl-server-t9ib.onrender.com/api/winners');
       if (response.data.success && response.data.data.length > 0) {
         const winnersData = response.data.data;
         setWinners(winnersData);
@@ -101,7 +101,7 @@ const Home = () => {
 
   const fetchLiveScoreLinks = async () => {
     try {
-      const response = await axios.get('/api/live-scores');
+      const response = await axios.get('https://mpl-server-t9ib.onrender.com/api/live-scores');
       if (response.data.success) {
         setLiveScoreLinks(response.data.data);
       }
@@ -149,7 +149,7 @@ const Home = () => {
       
       if (editingLink) {
         // Update existing link
-        const response = await axios.put(`/api/live-scores/${editingLink.id}`, newLiveScoreLink, {
+        const response = await axios.put(`https://mpl-server-t9ib.onrender.com/api/live-scores/${editingLink.id}`, newLiveScoreLink, {
           headers: { Authorization: `Bearer ${token}` }
         });
         
@@ -161,7 +161,7 @@ const Home = () => {
         }
       } else {
         // Add new link
-        const response = await axios.post('/api/live-scores', newLiveScoreLink, {
+        const response = await axios.post('https://mpl-server-t9ib.onrender.com/api/live-scores', newLiveScoreLink, {
           headers: { Authorization: `Bearer ${token}` }
         });
         
@@ -194,7 +194,7 @@ const Home = () => {
 
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.delete(`/api/live-scores/${linkId}`, {
+      const response = await axios.delete(`https://mpl-server-t9ib.onrender.com/api/live-scores/${linkId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       

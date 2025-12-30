@@ -15,7 +15,7 @@ const AdminLogin = ({ setIsAdmin }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post('/api/admin/login', { password });
+      const response = await axios.post('https://mpl-server-t9ib.onrender.com/api/admin/login', { password });
       
       if (response.data.success) {
         localStorage.setItem('adminToken', response.data.token);

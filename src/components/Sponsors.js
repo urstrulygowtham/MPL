@@ -32,7 +32,7 @@ const Sponsors = () => {
   const fetchSponsors = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/sponsors');
+      const response = await axios.get('https://mpl-server-t9ib.onrender.com/api/sponsors');
       if (response.data.success) {
         setSponsors(response.data.data);
       }
@@ -71,7 +71,7 @@ const Sponsors = () => {
         return;
       }
 
-      const response = await axios.put('/api/sponsors/update', {
+      const response = await axios.put('https://mpl-server-t9ib.onrender.com/api/sponsors/update', {
         sponsors: sponsors
       }, {
         headers: {

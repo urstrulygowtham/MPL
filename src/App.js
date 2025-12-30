@@ -34,7 +34,7 @@ function App() {
       }
 
       try {
-        const res = await axios.get('/api/admin/verify', {
+        const res = await axios.get('https://mpl-server-t9ib.onrender.com/api/admin/verify', {
           headers: {
             Authorization: `Bearer ${token}`
           }

@@ -25,7 +25,7 @@ const Gallery = () => {
   const fetchGalleryImages = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/gallery');
+      const response = await axios.get('https://mpl-server-t9ib.onrender.com/api/gallery');
       if (response.data.success) {
         setImages(response.data.data);
       }
@@ -86,7 +86,7 @@ const Gallery = () => {
 
       if (uploadResult.success) {
         // Save to MongoDB
-        const saveResponse = await axios.post('/api/gallery/add', {
+        const saveResponse = await axios.post('https://mpl-server-t9ib.onrender.com/api/gallery/add', {
           title: selectedFile.name.split('.')[0],
           imageUrl: uploadResult.url,
           category: activeTab === 'all' ? 'general' : activeTab,
@@ -121,7 +121,7 @@ const Gallery = () => {
 
     try {
       // Delete from MongoDB
-      await axios.delete(`/api/gallery/${imageId}`);
+      await axios.delete(`https://mpl-server-t9ib.onrender.com/api/gallery/${imageId}`);
 
       // Update local state
       setImages(images.filter(img => img._id !== imageId));

@@ -29,7 +29,7 @@ const Winners = () => {
   const fetchWinners = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/winners');
+      const response = await axios.get('https://mpl-server-t9ib.onrender.com/api/winners');
       if (response.data.success) {
         setWinners(response.data.data.sort((a, b) => b.season - a.season));
       }
@@ -66,7 +66,7 @@ const Winners = () => {
       const uploadResult = await uploadWinnerImage(file, season);
 
       if (uploadResult.success) {
-        const response = await axios.put(`/api/winners/season/${season}/image`, {
+        const response = await axios.put(`https://mpl-server-t9ib.onrender.com/api/winners/season/${season}/image`, {
           imageUrl: uploadResult.url,
           cloudinaryId: uploadResult.public_id
         });
@@ -104,7 +104,7 @@ const Winners = () => {
         return;
       }
 
-      const response = await axios.post('/api/winners/add', newSeasonData);
+      const response = await axios.post('https://mpl-server-t9ib.onrender.com/api/winners/add', newSeasonData);
       
       if (response.data.success) {
         setWinners([...winners, response.data.data].sort((a, b) => b.season - a.season));

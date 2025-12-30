@@ -16,7 +16,7 @@ const Contact = () => {
   const fetchContacts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/contact');
+      const response = await axios.get('https://mpl-server-t9ib.onrender.com/api/contact');
       if (response.data.success) {
         setContacts(response.data.data);
       } else {
@@ -26,7 +26,8 @@ const Contact = () => {
           { name: "Marella Krishna Reddy", phone: "9989668139" },
           { name: "Marella Narasimha Reddy", phone: "9700451818" },
           { name: "Potlapalli Nasar Reddy", phone: "7989624919" },
-          { name: "Marella Nagi Reddy", phone: "9000064339" }
+          { name: "Marella Nagi Reddy", phone: "9000064339" },
+          { name: "Marella Rami Reddy", phone: "8500723448" }
         ]);
       }
     } catch (error) {
